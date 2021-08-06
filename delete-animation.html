@@ -50,14 +50,14 @@
                 transform: translate(75%, 0) rotateZ(135deg);
             }
             60%, 100%{
-                transform: translate(120%, 80%) rotateZ(180deg);
+                transform: translate(100%, 80%) rotateZ(180deg);
             }
       
         }
 
         @keyframes returned {
             0% {
-                transform: translate(120%, 80%) rotateZ(180deg);
+                transform: translate(100%, 80%) rotateZ(180deg);
             }
             20% {
                 transform: translate(75%, 0) rotateZ(90deg);
@@ -88,30 +88,47 @@
         </g>
     </svg>
 
+    <div id="banner"><h1></h1></div>
+
     <script>
         const trash = document.getElementById('delete');
         const lid = document.getElementById("lid")
         const can = document.getElementById("can")
+        const banner = document.getElementById('banner')
         trash.addEventListener('click', (e) => {
 
             if(lid.classList.contains('dropped')) {
                 lid.style.animation="returned 2s linear forwards"
-                lid.classList.remove('dropped')
-                console.log('dropped')
+                banner.innerHTML = "<h1>Thank you!</h1>"
+                setTimeout(() =>{
+
+                
+                    lid.classList.remove('dropped')
+                    banner.innerHTML = "<h1></h1>"
+                },2000
+                )
+                
+                
             }else {
                 lid.style.animation="dropLid 1s linear forwards"
-            lid.classList.add('dropped')
+                lid.classList.add('dropped')
+                banner.innerHTML = "<h1>Hey, you better put that lid back!!!</h1>"
+                
             }
             
-            console.log('not dropped')
+            
         })
         trash.addEventListener('mouseover', (e) => {
-            lid.style.animation="openLid 1s ease forwards"
+            if(!lid.classList.contains('dropped')){
+                lid.style.animation="openLid 1s ease forwards"
+            }
+            
             
         })
         trash.addEventListener('mouseout', (e) => {
+            if(!lid.classList.contains('dropped')){
             lid.style.animation="closeLid 1s ease forwards"
-            
+            }
         })
     </script>
 </body>
