@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+    <style>
+        #delete:hover #lid{
+            animation: openLid 1s ease forwards;
+        }
+
+        @keyframes openLid {
+            from {
+                transform: translate(0, 0) rotateZ(0);
+            }
+
+            to {
+                transform:translate(60%,-30%) rotateZ(45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="350" height="350" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="delete">
+        <rect width="250" height="250" fill="white"/>
+        <path id="can" d="M61.5 218L55.5 99H194.5L187.5 218H61.5Z" fill="black" stroke="black"/>
+        <g id="lines">
+        <path id="line3" d="M125 108V195.5" stroke="white" stroke-width="3"/>
+        <path id="line2" d="M95 108V196.5" stroke="white" stroke-width="3"/>
+        <path id="line1" d="M155 108.5V195" stroke="white" stroke-width="3"/>
+        </g>
+        <path id="lid" d="M204 86.5H46.5V53H94.5V29.5H154.5V53H204V86.5Z" fill="black" stroke="black"/>
+        </g>
+    </svg>
+</body>
+</html>
