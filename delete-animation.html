@@ -14,9 +14,9 @@
         #delete {
             background: none;
         }
-        #delete:hover #lid{
+        /* #delete:hover #lid{
             animation: openLid 1s ease forwards;
-        }
+        } */
 
         
 
@@ -27,6 +27,15 @@
 
             to {
                 transform:translate(40%,-30%) rotateZ(45deg);
+            }
+        }
+        @keyframes closeLid {
+            from {
+                /* transform: translate(40%, -30%) rotateZ(45deg); */
+            }
+
+            to {
+                transform:translate(0,00) rotateZ(0);
             }
         }
 
@@ -44,6 +53,24 @@
                 transform: translate(120%, 80%) rotateZ(180deg);
             }
       
+        }
+
+        @keyframes returned {
+            0% {
+                transform: translate(120%, 80%) rotateZ(180deg);
+            }
+            20% {
+                transform: translate(75%, 0) rotateZ(90deg);
+            }
+            40% {
+                transform: translate(60%, -20%) rotateZ(45deg);
+            }
+            60% {
+                transform: translate(40%,-10%) rotateZ(0); 
+            }
+            80% {
+                transform: translate(0,0) rotateZ(0); 
+            }
         }
     </style>
 </head>
@@ -66,7 +93,25 @@
         const lid = document.getElementById("lid")
         const can = document.getElementById("can")
         trash.addEventListener('click', (e) => {
-            lid.style.animation="dropLid 1s linear forwards"
+
+            if(lid.classList.contains('dropped')) {
+                lid.style.animation="returned 2s linear forwards"
+                lid.classList.remove('dropped')
+                console.log('dropped')
+            }else {
+                lid.style.animation="dropLid 1s linear forwards"
+            lid.classList.add('dropped')
+            }
+            
+            console.log('not dropped')
+        })
+        trash.addEventListener('mouseover', (e) => {
+            lid.style.animation="openLid 1s ease forwards"
+            
+        })
+        trash.addEventListener('mouseout', (e) => {
+            lid.style.animation="closeLid 1s ease forwards"
+            
         })
     </script>
 </body>
