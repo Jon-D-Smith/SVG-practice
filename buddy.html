@@ -6,14 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Buddy</title>
     <style>
-        :root {
-            --left-num : 1000;
-        }
         #buddy {
-            --left-num : 1000;
             position: absolute;
             left: 15px;
-            top: 30px;
+         
         }
     </style>
 </head>
@@ -32,10 +28,24 @@
         <script>
             const buddy = document.getElementById('buddy')
             const buddy_body = document.getElementById('body')
+            let bleft = 150
+            let btop = 150
+
+            window.addEventListener('load', (e) => {
+                buddy.style.left = `${bleft}px`
+                buddy.style.top= `${btop}px`
+            })
 
             document.addEventListener('mousemove', (e) => {
-                buddy.style.left = `${e.clientX}px`
-                buddy.style.top = `${e.clientY}px`
+                // buddy.style.left = `${e.clientX}px`
+                // buddy.style.top = `${e.clientY}px`
+                
+                buddy.animate({
+                    left: `${e.clientX}px`,
+                    top: `${e.clientY}px`
+                },2500)
+                
+                
             })
         </script>
 </body>
